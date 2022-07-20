@@ -18,6 +18,7 @@ amqp.connect(HOST, (connError, connection) => {
 
         channel.consume(QUEUE, (msg) => {
             console.log(msg.content.toString())
+            console.log(JSON.parse(msg.content.toString()))
         }, {
             noAck: true
         })
