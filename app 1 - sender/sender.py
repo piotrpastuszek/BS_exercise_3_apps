@@ -1,5 +1,6 @@
 import pika
 import yaml
+import json
 from yaml.loader import SafeLoader
 from multiprocessing import connection
 
@@ -14,6 +15,10 @@ HOST = data['HOST']
 with open(FILE, 'r') as f:
     json_object = f.read()
 
+try:
+    json_string = json.loads(json_object)
+except ValueError as error:
+    print("404 Bad Request")
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host=HOST))
@@ -30,6 +35,6 @@ try:
         
     print("Sent succesfully")
 except Exception as e:
-    print('400 Bad Request')
+    print("Something went wrong")
 
 connection.close()
