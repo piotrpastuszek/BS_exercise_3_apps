@@ -1,5 +1,5 @@
 {
     "name": "dowolny",
-    "type": "JSON",
+    "type": "JSON_FILE",
     "method": "POST"
 }
