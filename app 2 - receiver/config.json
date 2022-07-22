@@ -1,4 +1,0 @@
-{
-    "HOST": "amqp://127.0.0.1",
-    "QUEUE": "BS_exercise"
-}
