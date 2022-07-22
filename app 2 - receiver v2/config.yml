@@ -1,2 +1,4 @@
   HOST: 127.0.0.1
   QUEUE: BS_exercise
+  REDIS_HOST: localhost
+  REDIS_PORT: 6379
