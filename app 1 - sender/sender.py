@@ -17,24 +17,26 @@ with open(FILE, 'r') as f:
 
 try:
     json_string = json.loads(json_object)
+
+
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters(host=HOST))
+    channel = connection.channel()
+
+    try:
+        channel.queue_declare(queue=QUEUE, durable=True)
+
+        channel.basic_publish(
+                            exchange='', 
+                            routing_key=QUEUE, 
+                            body=json_object,
+                            )
+            
+        print("Sent succesfully")
+    except Exception as e:
+        print("Something went wrong")
+
+    connection.close()
+
 except ValueError as error:
     print("404 Bad Request")
-
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host=HOST))
-channel = connection.channel()
-
-try:
-    channel.queue_declare(queue=QUEUE, durable=True)
-
-    channel.basic_publish(
-                        exchange='', 
-                        routing_key=QUEUE, 
-                        body=json_object,
-                        )
-        
-    print("Sent succesfully")
-except Exception as e:
-    print("Something went wrong")
-
-connection.close()
