@@ -1,8 +1,5 @@
 {
-    "json_content":
-    {
-        "name": "dowolny",
-        "type": "JSON",
-        "method": "POST"
-    } 
+    "name": "dowolny",
+    "type": "JSON",
+    "method": "POST"
 }
