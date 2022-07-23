@@ -1,0 +1,8 @@
+FROM python:3.10.4
+
+COPY ask_redis.py .
+COPY config.yml .
+
+RUN pip install pyyaml redis
+
+CMD [ "python", "./ask_redis.py" ]
