@@ -1,0 +1,10 @@
+FROM python:3.10.4
+
+COPY sender.py .
+COPY config.yml .
+RUN mkdir -p /File_to_post
+COPY ./file_to_post/data.json /file_to_post/data.json
+
+RUN pip install pika pyyaml
+
+CMD [ "python", "./sender.py" ]
