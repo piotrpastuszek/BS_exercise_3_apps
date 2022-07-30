@@ -1,8 +1,7 @@
 FROM python:3.10.4
 
-COPY receiver.py .
-COPY config.yml .
+COPY receiver.py config.yml requirements.txt ./
 
-RUN pip install pika pyyaml redis
+RUN pip install -r requirements.txt
 
 CMD [ "python", "./receiver.py" ]

@@ -1,8 +1,7 @@
 FROM python:3.10.4
 
-COPY ask_redis.py .
-COPY config.yml .
+COPY ask_redis.py config.yml requirements.txt ./
 
-RUN pip install pyyaml redis
+RUN pip install -r requirements.txt
 
 CMD [ "python", "./ask_redis.py" ]
