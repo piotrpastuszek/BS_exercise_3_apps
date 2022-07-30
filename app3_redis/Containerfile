@@ -1,5 +1,9 @@
 FROM python:3.10.4
 
+RUN groupadd -r application && useradd -r -g application application && mkdir -p /application_dir && chown application /application_dir
+WORKDIR /application_dir
+USER application
+
 COPY ask_redis.py config.yml requirements.txt ./
 
 RUN pip install -r requirements.txt
