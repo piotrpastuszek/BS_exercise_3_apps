@@ -1,7 +1,11 @@
 FROM python:3.10.4
 
+RUN groupadd -r application && useradd -r -g application application && mkdir -p /application_dir && chown application /application_dir
+WORKDIR /application_dir
+USER application
+
 COPY sender.py config.yml requirements.txt ./
-RUN mkdir -p /File_to_post
+RUN mkdir -p ./File_to_post
 COPY ./file_to_post/data.json /file_to_post/data.json
 
 RUN pip install -r requirements.txt
