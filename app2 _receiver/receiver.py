@@ -1,4 +1,5 @@
 from inspect import ismemberdescriptor
+import random
 import pika
 import sys
 import os
@@ -8,6 +9,9 @@ import redis
 from redis.commands.json.path import Path
 from yaml.loader import SafeLoader
 from multiprocessing import connection
+from flask import Flask
+
+app = Flask(__name__)
 
 with open('config.yml') as configuration:
     data = yaml.load(configuration, Loader=yaml.FullLoader)
@@ -33,8 +37,9 @@ def main():
         def pass_to_redis():
             try:
                 r = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
-                r.set('msg_from_rabbitmq', json.dumps(object))
-                r.expire('msg_from_rabbitmq', 60)
+                msg_key = ''.join((random.choice('abcdefghijklmnoprstuwxyz') for i in range(3)))
+                r.set(msg_key, json.dumps(object))
+                r.expire(msg_key, 60)
             except Exception as e:
                 print(e)
 
