@@ -23,18 +23,13 @@ jobs:
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Move to first app
+    - name: Test apps
       run: |
         cd app1_sender/
         pytest
         cd ..
-    - name: Move to second app
-      run: |
         cd app2_receiver/
         pytest
         cd ..
-    - name: Move to second app
-      run: |
-        cd app2_receiver/
+        cd app3_redis/
         pytest
-        cd ..
