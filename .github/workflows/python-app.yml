@@ -9,7 +9,6 @@ jobs:
     
 
     steps:
-    - working-directory: /home/runner/work/BS_exercise_3_apps
     - uses: actions/checkout@v3
     - name: Set up Python 3.10.4
       uses: actions/setup-python@v3
