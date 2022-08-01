@@ -2,6 +2,9 @@ from itertools import count
 import redis
 import yaml
 import yaml.loader
+from flask import Flask
+
+app = Flask(__name__)
 
 with open('config.yml') as configuration:
     data = yaml.load(configuration, Loader=yaml.FullLoader)
@@ -9,11 +12,18 @@ with open('config.yml') as configuration:
 HOST = data['HOST']
 PORT = data['PORT']
 
-r = redis.Redis(
-    host=HOST,
-    port=PORT)
+@app.route('/size', methods=['GET'])
+def get_redis_size():
 
-count = redis.Redis()
-size = count.dbsize()
+    r = redis.Redis(
+        host=HOST,
+        port=PORT)
 
-print(size)
+    count = redis.Redis()
+    size = count.dbsize()
+    size_msg = str(size)
+
+    return size_msg
+
+if __name__ == '__main__':
+    app.run(debug=True)
