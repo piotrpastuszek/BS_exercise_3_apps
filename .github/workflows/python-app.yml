@@ -27,9 +27,7 @@ jobs:
       run: |
         cd app1_sender/
         pytest
-        cd ..
         cd app2_receiver/
         pytest
-        cd ..
         cd app3_redis/
         pytest
