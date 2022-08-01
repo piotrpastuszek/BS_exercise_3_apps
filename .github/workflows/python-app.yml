@@ -7,7 +7,6 @@ jobs:
 
     runs-on: ubuntu-22.04
     
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10.4
@@ -25,14 +24,14 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test app 1
-      working-directory: ./app1_sender
       run: |
         pytest
+      working-directory: app1_sender
     - name: Test app 2
-      working-directory: ./app2_receiver
       run: |
         pytest
+      working-directory: app2_receiver
     - name: Test app 3
-      working-directory: ./app3_redis
       run: |
         pytest
+      working-directory: app3_redis
