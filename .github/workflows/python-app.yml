@@ -26,12 +26,3 @@ jobs:
     - name: Test app 1
       run: |
         pytest
-      working-directory: app1_sender/
-    - name: Test app 2
-      run: |
-        pytest
-      working-directory: app2_receiver/
-    - name: Test app 3
-      run: |
-        pytest
-      working-directory: app3_redis/
