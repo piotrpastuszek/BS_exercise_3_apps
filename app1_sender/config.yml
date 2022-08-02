@@ -3,3 +3,5 @@
   QUEUE: BS_exercise
 
   FILE_PATH: file_to_post/data.json
+
+  APP_HOST: 0.0.0.0

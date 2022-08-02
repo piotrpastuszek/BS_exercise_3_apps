@@ -18,6 +18,7 @@ with open('config.yml') as configuration:
 
 HOST = data['HOST']
 QUEUE = data['QUEUE']
+APP_HOST = data['APP_HOST']
 
 REDIS_HOST = data['REDIS_HOST']
 REDIS_PORT = data['REDIS_PORT']

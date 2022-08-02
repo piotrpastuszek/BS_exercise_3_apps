@@ -13,6 +13,7 @@ with open('config.yml') as configuration:
 FILE = data['FILE_PATH']
 QUEUE = data['QUEUE']
 HOST = data['HOST']
+APP_HOST = data['APP_HOST']
 
 @app.route('/add', methods=['POST'])
 def get_data():
@@ -48,4 +49,4 @@ def get_data():
     
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host=APP_HOST, debug=True)

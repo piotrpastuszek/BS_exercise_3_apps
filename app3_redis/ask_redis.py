@@ -11,6 +11,7 @@ with open('config.yml') as configuration:
 
 HOST = data['HOST']
 PORT = data['PORT']
+APP_HOST = data['APP_HOST']
 
 @app.route('/size', methods=['GET'])
 def get_redis_size():
@@ -26,4 +27,4 @@ def get_redis_size():
     return size_msg
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host=APP_HOST, debug=True)

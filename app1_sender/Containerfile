@@ -4,8 +4,8 @@ RUN groupadd -r application && useradd -r -g application application && mkdir -p
 WORKDIR /application_dir
 
 COPY sender.py config.yml requirements.txt ./
-RUN mkdir -p ./File_to_post
-COPY ./file_to_post/data.json /file_to_post/data.json
+RUN mkdir -p ./file_to_post
+COPY ./file_to_post/ ./file_to_post/
 
 RUN pip install -r requirements.txt
 
