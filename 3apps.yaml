@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sender-app
+  name: sender
   labels:
-    app: sender-app
+    app: sender
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sender-app
+      app: sender
   template:
     metadata:
       labels:
-        app: sender-app
+        app: sender
     spec:
       containers:
-      - name: sender-app
-        image: bsexercisecontainerregistry.azurecr.io/sender-app:v1
+      - name: sender
+        image: bsexercisecontainerregistry.azurecr.io/sender
         resources:
           limits:
             memory: "128Mi"
@@ -27,10 +27,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sender-app
+  name: sender
 spec:
   selector: 
-    app: sender-app
+    app: sender
   type: ClusterIP
   ports:
   - port: 8007
@@ -41,22 +41,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: receiver-app
+  name: receiver
   labels:
-    app: receiver-app
+    app: receiver
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: receiver-app
+      app: receiver
   template:
     metadata:
       labels:
-        app: receiver-app
+        app: receiver
     spec:
       containers:
-      - name: receiver-app
-        image: bsexercisecontainerregistry.azurecr.io/receiver-app:v1
+      - name: receiver
+        image: bsexercisecontainerregistry.azurecr.io/receiver
         resources:
           limits:
             memory: "128Mi"
@@ -67,10 +67,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: receiver-app
+  name: receiver
 spec:
   selector: 
-    app: receiver-app
+    app: receiver
   type: ClusterIP
   ports:
   - port: 8008
@@ -81,22 +81,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-app
+  name: askred
   labels:
-    app: redis-app
+    app: askred
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: redis-app
+      app: askred
   template:
     metadata:
       labels:
-        app: redis-app
+        app: askred
     spec:
       containers:
-      - name: redis-app
-        image: bsexercisecontainerregistry.azurecr.io/redis-app:v1
+      - name: askred
+        image: bsexercisecontainerregistry.azurecr.io/askred
         resources:
           limits:
             memory: "128Mi"
@@ -107,10 +107,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-app
+  name: askred
 spec:
   selector: 
-    app: redis-app
+    app: askred
   type: ClusterIP
   ports:
   - port: 8009
