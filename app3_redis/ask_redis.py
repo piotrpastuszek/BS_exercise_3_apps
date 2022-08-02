@@ -27,4 +27,4 @@ def get_redis_size():
     return size_msg
 
 if __name__ == '__main__':
-    app.run(host=APP_HOST, debug=True)
+    app.run(debug=True)
