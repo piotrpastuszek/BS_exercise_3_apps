@@ -10,6 +10,10 @@ App 3 - printing out number of objects stored in Redis.
 
 
 
-UPDATE
+UPDATE - 23.07.2022
 
 Now for each app there is Containerfile to bild images of this app's.
+
+UPDATE - 30.07.2022
+
+Now there is requirements.txt files to every Containerfiles
