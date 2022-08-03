@@ -34,9 +34,17 @@ jobs:
           # app-dir: ~/BS_exercise_3_apps/app1_sender/  # If you're requirements.txt isn't in the root directory.
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
-          name: Run tests
+          name: Run tests on app1
           # This assumes pytest is installed via the install-package step above
           command: cd app1_sender/ && pytest
+      - run:
+          name: Run tests on app2
+          # This assumes pytest is installed via the install-package step above
+          command: cd app2_receiver/ && pytest
+      - run:
+          name: Run tests on app3
+          # This assumes pytest is installed via the install-package step above
+          command: cd app3_redis/ && pytest
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
