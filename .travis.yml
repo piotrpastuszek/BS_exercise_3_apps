@@ -8,4 +8,3 @@ install:
 before_script: cd app1_sender
 script:
   - pytest
-  - python3 sender.py
