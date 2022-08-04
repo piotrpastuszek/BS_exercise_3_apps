@@ -16,13 +16,26 @@ spec:
     spec:
       containers:
       - name: sender
-        image: bsexercisecontainerregistry.azurecr.io/sender
+        image: sender
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 8007
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 3
 ---
 apiVersion: v1
 kind: Service
@@ -33,8 +46,8 @@ spec:
     app: sender
   type: ClusterIP
   ports:
-  - port: 8007
-    targetPort: 8007
+  - protocol: TCP
+    port: 80
 ---
 
 
@@ -56,13 +69,26 @@ spec:
     spec:
       containers:
       - name: receiver
-        image: bsexercisecontainerregistry.azurecr.io/receiver
+        image: receiver
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 8008
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 3
 ---
 apiVersion: v1
 kind: Service
@@ -73,8 +99,8 @@ spec:
     app: receiver
   type: ClusterIP
   ports:
-  - port: 8008
-    targetPort: 8008
+  - protocol: TCP
+    port: 80
 ---
 
 
@@ -96,13 +122,26 @@ spec:
     spec:
       containers:
       - name: askred
-        image: bsexercisecontainerregistry.azurecr.io/askred
+        image: askred
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 8009
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 3
 ---
 apiVersion: v1
 kind: Service
@@ -113,5 +152,5 @@ spec:
     app: askred
   type: ClusterIP
   ports:
-  - port: 8009
-    targetPort: 8009
+  - protocol: TCP
+    port: 80

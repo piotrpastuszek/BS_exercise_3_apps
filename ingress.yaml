@@ -4,26 +4,25 @@ metadata:
   name: ingress
   labels:
     name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: bsexercise.info
     http:
       paths:
       - pathType: Prefix
-        path: /
+        path: "/send/add"
         backend:
           service:
-            name: web
+            name: sender
             port: 
-              number: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: web
-spec:
-  selector:
-    app: web
-  ports:
-  - port: 8080
-    targetPort: 8080
+              number: 80
+      - pathType: Prefix
+        path: "/send/size"
+        backend:
+          service:
+            name: askred
+            port: 
+              number: 80
+          
