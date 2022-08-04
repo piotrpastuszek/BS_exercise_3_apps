@@ -5,6 +5,7 @@ python:
 install:
   - pip install -r requirements.txt
 # command to run tests
+before_script: cd pp1_sender
 script:
   - pytest
-  - cd app1_sender/ && python3 sender.app
+  - cd python3 sender.py
