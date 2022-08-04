@@ -8,4 +8,4 @@ install:
 before_script: cd pp1_sender
 script:
   - pytest
-  - cd python3 sender.py
+  - python3 sender.py
